@@ -1,5 +1,5 @@
 import sys, random, urllib.request, json, requests
-import io #デバッグ用
+import io
 from lxml import etree
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
@@ -54,6 +54,3 @@ requests.post("https://hooks.slack.com/services/T0321RSJ5/B52NPGUDA/oLQLarGHEG9X
     "icon_emoji": u":psychedelic:",
     "link_names": 1,
 }))
-
-#sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
-#print(song_info_list)

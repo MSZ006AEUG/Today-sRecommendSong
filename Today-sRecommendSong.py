@@ -49,19 +49,14 @@ readObj = urllib.request.urlopen(JsonURL + paramStr)
 response = readObj.read()
 
 content = json.loads(response.decode("utf-8"))
-print(content)
-Json_content = json.dumps(content)
-print(type(Json_content))
-iTunesURL = content["collectionViewUrl"]
-
-print(iTunesURL)
+iTunesURL = content['results'][0]['collectionViewUrl']
 
 
 #Post to Slack
-'''PostText = "本日の1曲\n" + SongTitle + " / " + ArtistName + " (" + SongYear + ") from " + AlbumTitle + "\n" + iTunesURL
+PostText = "本日の1曲\n" + SongTitle + " / " + ArtistName + " (" + SongYear + ") from " + AlbumTitle + "\n" + iTunesURL
 requests.post("https://hooks.slack.com/services/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", data = json.dumps({
     "text": PostText,
     "username": u"Today's Recommend Song",
     "icon_emoji": u":psychedelic:",
     "link_names": 1,
-}))'''
+}))

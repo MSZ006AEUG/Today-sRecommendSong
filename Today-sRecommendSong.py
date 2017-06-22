@@ -1,10 +1,11 @@
 import sys, random, urllib.request, json, requests, urllib.parse
 import io
 from lxml import etree
+from posturl import *
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 #Read XML
-xml_path = "C:/Users/znokodo/Music/iTunes/iTunes Music Library.xml"
+xml_path = "C:/Users/ZETA/Music/iTunes/iTunes Music Library.xml"
 tree = etree.parse(xml_path)
 root = tree.getroot()
 
@@ -54,7 +55,7 @@ iTunesURL = content['results'][0]['collectionViewUrl']
 
 #Post to Slack
 PostText = "本日の1曲\n" + SongTitle + " / " + ArtistName + " (" + SongYear + ") from " + AlbumTitle + "\n" + iTunesURL
-requests.post("https://hooks.slack.com/services/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", data = json.dumps({
+requests.post(PostURL, data = json.dumps({
     "text": PostText,
     "username": u"Today's Recommend Song",
     "icon_emoji": u":psychedelic:",
